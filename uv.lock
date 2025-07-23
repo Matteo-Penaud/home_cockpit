@@ -1,0 +1,36 @@
+version = 1
+revision = 2
+requires-python = ">=3.9"
+
+[[package]]
+name = "home-cockpit"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "pyserial" },
+    { name = "simconnect" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "pyserial", specifier = ">=3.5" },
+    { name = "simconnect", specifier = ">=0.4.26" },
+]
+
+[[package]]
+name = "pyserial"
+version = "3.5"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/1e/7d/ae3f0a63f41e4d2f6cb66a5b57197850f919f59e558159a4dd3a818f5082/pyserial-3.5.tar.gz", hash = "sha256:3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb", size = 159125, upload-time = "2020-11-23T03:59:15.045Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/07/bc/587a445451b253b285629263eb51c2d8e9bcea4fc97826266d186f96f558/pyserial-3.5-py2.py3-none-any.whl", hash = "sha256:c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0", size = 90585, upload-time = "2020-11-23T03:59:13.41Z" },
+]
+
+[[package]]
+name = "simconnect"
+version = "0.4.26"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/41/26/5481c132dcab9bbdd2fb85954d5608f87f387abed0dd3788353b05aa8cb3/SimConnect-0.4.26.tar.gz", hash = "sha256:9fb7574ed5dc9f407c290f47ba3fcc529946e7e728b2090c2b091f5f54c656b4", size = 97991, upload-time = "2022-06-15T19:15:51.068Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/76/bf/3baa88079144b6e5ab224b76725fa36f502554e95b9c27c42bac9c6de48f/SimConnect-0.4.26-py2.py3-none-any.whl", hash = "sha256:b77ca43f52df236a34f1f6b1b7c7cfdb0ff5677f86f8a6fd2c1819078fe07d76", size = 96098, upload-time = "2022-06-15T19:15:49.23Z" },
+]
