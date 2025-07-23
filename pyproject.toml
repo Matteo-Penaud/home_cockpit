@@ -1,10 +1,14 @@
 [project]
 name = "home-cockpit"
 version = "0.1.0"
-description = "Add your description here"
+description = "Home cockpit with STM32"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
     "pyserial>=3.5",
+    "pytest>=8.4.1",
     "simconnect>=0.4.26",
 ]
+[tool.ruff.lint]
+fixable = ["ALL"]
+unfixable = []

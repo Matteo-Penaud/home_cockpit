@@ -1,3 +1,6 @@
+import SimConnect
+
+
 def main():
     print("Hello from home-cockpit!")
 
