@@ -50,6 +50,19 @@ def test_encode_empty_data():
     assert encode(0xFE, bytes()) == bytes(expected_frame_raw)
 
 
+def test_encode_string_data():
+    string_data = "Hello"
+    expected_frame_raw = (
+        [START_BYTE, 0x15, len(string_data)]
+        + [ord(x) for x in string_data]
+        + [0x00, STOP_BYTE]
+    )
+    expected_frame_raw[-2] = compute_checksum(bytes(expected_frame_raw))
+    assert encode(0x15, bytes(string_data, encoding="utf-8")) == bytes(
+        expected_frame_raw
+    )
+
+
 def test_encode_invalid_req_id():
     with pytest.raises(ValueError):
         encode(0x100, bytes())
