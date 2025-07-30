@@ -1,6 +1,7 @@
-from protocol.packet import compute_checksum, START_BYTE, STOP_BYTE, encode
-import pytest
 import random
+
+import pytest
+from protocol.packet import START_BYTE, STOP_BYTE, compute_checksum, decode, encode
 
 
 def test_compute_checksum_single_byte():
@@ -66,3 +67,48 @@ def test_encode_string_data():
 def test_encode_invalid_req_id():
     with pytest.raises(ValueError):
         encode(0x100, bytes())
+
+
+def test_decode_single_byte():
+    raw_frame = [START_BYTE, 0x00, 0x01, 0xBB, 0x00, STOP_BYTE]
+    raw_frame[-2] = compute_checksum(bytes(raw_frame))
+
+    assert decode(bytes(raw_frame)) == (0x00, bytes([0xBB]))
+
+
+def test_decode_multiple_bytes():
+    random_data = [b for b in random.randbytes(0x10)]
+    raw_frame = [START_BYTE, 0xCA, 0x10] + random_data + [0x00, STOP_BYTE]
+    raw_frame[-2] = compute_checksum(bytes(raw_frame))
+
+    assert decode(bytes(raw_frame)) == (0xCA, bytes(random_data))
+
+
+def test_decode_empty_data():
+    raw_frame = [START_BYTE, 0xFE, 0x00, 0x00, STOP_BYTE]
+    raw_frame[-2] = compute_checksum(bytes(raw_frame))
+
+    assert decode(bytes(raw_frame)) == (0xFE, bytes())
+
+
+def test_decode_invalid_start():
+    raw_frame = [0x24, 0xFE, 0x01, 0x00, 0x00, STOP_BYTE]
+    raw_frame[-2] = compute_checksum(bytes(raw_frame))
+
+    with pytest.raises(ValueError):
+        decode(raw_frame)
+
+
+def test_decode_invalid_stop():
+    raw_frame = [START_BYTE, 0xFE, 0x01, 0x00, 0x00, 0x00]
+    raw_frame[-2] = compute_checksum(bytes(raw_frame))
+
+    with pytest.raises(ValueError):
+        decode(raw_frame)
+
+
+def test_decode_invalid_checksum():
+    raw_frame = [START_BYTE, 0xFE, 0x01, 0x00, 0xCD, STOP_BYTE]
+
+    with pytest.raises(ValueError):
+        decode(raw_frame)
