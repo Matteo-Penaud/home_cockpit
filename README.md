@@ -1,3 +1,6 @@
+[![Tests CI](https://github.com/Matteo-Penaud/home_cockpit/actions/workflows/tests-ci.yml/badge.svg)](https://github.com/Matteo-Penaud/home_cockpit/actions)
+
+
 # MSFS2020 Home Cockpit Hub
 Sandbox for an Home Cockpit for MSFS2020
 
