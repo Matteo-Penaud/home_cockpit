@@ -1,7 +1,7 @@
 import random
 
 import pytest
-from protocol.packet import START_BYTE, STOP_BYTE, compute_checksum, decode, encode
+from com.packet import START_BYTE, STOP_BYTE, compute_checksum, decode, encode
 
 
 def test_compute_checksum_single_byte():
