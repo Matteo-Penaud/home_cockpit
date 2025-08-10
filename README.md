@@ -1,9 +1,16 @@
+# ✈️ MSFS Connect - PC application
+*Extend your flight sim experience !*
+
 [![Tests CI](https://github.com/Matteo-Penaud/home_cockpit/actions/workflows/tests-ci.yml/badge.svg)](https://github.com/Matteo-Penaud/home_cockpit/actions)
 
+# 💡 Why this project ?
+I've been using Flight Simulators for over a decade, and wanted to extend the immersion using my current knowledges, and improve myself through a end-to-end development process.
 
-# MSFS2020 Home Cockpit Hub
-Sandbox for an Home Cockpit for MSFS2020
+# 🚀 Features
+- Real-time data exchange with Microsoft Flight Simulator 2020 using SimConnect
+- Asynchronous communication protocol between PC and microcontroller
+- Full CI/CD pipeline with automated testing and code coverage
 
-# How to use
-Clone the repo and run 
-'''uv sync'''
+# 🧩 Architecture overview
+
+# ⚙️ Getting started
