@@ -14,3 +14,5 @@ I've been using Flight Simulators for over a decade, and wanted to extend the im
 # 🧩 Architecture overview
 
 # ⚙️ Getting started
+[Install](https://docs.astral.sh/uv/getting-started/installation/) **UV** and run :
+```uv sync``` to synchronize python version and requirements
