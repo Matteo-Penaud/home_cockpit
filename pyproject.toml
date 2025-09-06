@@ -13,3 +13,4 @@ dependencies = [
 [tool.ruff.lint]
 fixable = ["ALL"]
 unfixable = []
+select = ["ALL"]
