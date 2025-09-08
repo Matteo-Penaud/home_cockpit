@@ -9,7 +9,9 @@ from pc.msfs.interface import MsfsThread
 AIRCRAFT_REQS = {
     "COM_ACTIVE_FREQUENCY:1": None,
     "COM_STANDBY_FREQUENCY:1": None,
-    "PLANE_ALTITUDE": None,
+    "INDICATED_ALTITUDE_EX1": None,
+    "INDICATED_ALTITUDE": None,
+    "FUEL_TOTAL_QUANTITY": None,
 }
 
 

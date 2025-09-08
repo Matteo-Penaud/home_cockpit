@@ -1,0 +1,10 @@
+__defines__: None
+vars:
+  "VAR_1:1":
+    range: [118.000, 136.000]
+    settable: False
+    step: 0.025
+    type: "Frequency BCD16"
+  "VAR_2":
+    settable: False
+    type: "bool"
