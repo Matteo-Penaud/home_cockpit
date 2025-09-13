@@ -1,3 +1,5 @@
+"""Packets management."""
+
 START_BYTE = 0xAA
 STOP_BYTE = 0x55
 
@@ -7,14 +9,15 @@ def compute_checksum(data: bytes) -> int:
         result = 0
         for b in data:
             result ^= b
-    except TypeError:
-        raise AssertionError("Input data should be bytes")
+    except TypeError as e:
+        msg = "Input data should be bytes"
+        raise TypeError(msg) from e
 
     return result
 
 
 def encode(req_id: int, data: bytes) -> bytes:
-    frame = [START_BYTE, req_id, len(data)] + [x for x in data] + [0x00, STOP_BYTE]
+    frame = [START_BYTE, req_id, len(data), *list(data), 0x00, STOP_BYTE]
     frame[-2] = compute_checksum(frame)
 
     return bytes(frame)
@@ -26,9 +29,12 @@ def decode(frame: bytes) -> tuple[int, bytes]:
     frame_without_checksum[-2] = 0x00
 
     if frame[0] != START_BYTE:
-        raise ValueError("Invalid start byte")
+        msg = "Invalid start byte"
+        raise ValueError(msg)
     if frame[-1] != STOP_BYTE:
-        raise ValueError("Invalid stop byte")
+        msg = "Invalid stop byte"
+        raise ValueError(msg)
     if frame[-2] != compute_checksum(frame_without_checksum):
-        raise ValueError("Invalid checksum byte")
+        msg = "Invalid checksum byte"
+        raise ValueError(msg)
     return (frame[1], bytes(frame[3:-2]))
